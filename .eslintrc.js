@@ -21,7 +21,6 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
-    'no-plusplus': 'off',
   },
   plugins: ['prettier'],
 };

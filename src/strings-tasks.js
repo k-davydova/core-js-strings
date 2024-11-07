@@ -309,14 +309,14 @@ function containsSubstring(str, substring) {
  */
 function countVowels(str) {
   const vowels = ['a', 'e', 'i', 'o', 'u', 'y'];
-
+  const arr = str.split('');
   let counter = 0;
 
-  for (let i = 0; i < str.length; i++) {
-    if (vowels.includes(str[i].toLowerCase())) {
-      counter++;
+  arr.forEach((el) => {
+    if (vowels.includes(el.toLowerCase())) {
+      counter += 1;
     }
-  }
+  });
 
   return counter;
 }
@@ -353,21 +353,19 @@ function isPalindrome(str) {
  *   findLongestWord('No words here') => 'words'
  */
 function findLongestWord(sentence) {
-  let currentLength;
-  let longestWord;
+  let longestWord = '';
   let maxLength = 0;
+
   const arr = sentence.split(' ');
 
-  for (let i = 0; i < arr.length; i++) {
-    currentLength = arr[i].length;
-
-    if (currentLength > maxLength) {
-      maxLength = currentLength;
-      longestWord = arr[i];
+  arr.forEach((word) => {
+    if (word.length > maxLength) {
+      longestWord = word;
+      maxLength = word.length;
     }
-  }
+  });
 
-  return longestWord || '';
+  return longestWord;
 }
 
 /**
@@ -383,11 +381,7 @@ function findLongestWord(sentence) {
 function reverseWords(str) {
   const arr = str.split(' ');
 
-  for (let i = 0; i < arr.length; i++) {
-    arr[i] = arr[i].split('').reverse().join('');
-  }
-
-  return arr.join(' ');
+  return arr.map((el) => el.split('').reverse().join('')).join(' ');
 }
 
 /**
@@ -402,17 +396,14 @@ function reverseWords(str) {
  *   invertCase('12345') => '12345'
  */
 function invertCase(str) {
-  let result = '';
+  const arr = str.split('');
 
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === str[i].toUpperCase()) {
-      result += str[i].toLowerCase();
-    } else {
-      result += str[i].toUpperCase();
-    }
-  }
+  arr.forEach((char, i) => {
+    arr[i] =
+      char === char.toLowerCase() ? char.toUpperCase() : char.toLowerCase();
+  });
 
-  return result;
+  return arr.join('');
 }
 
 /**
